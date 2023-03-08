@@ -1,0 +1,24 @@
+Numéro du voyageur : 1
+Numéro du logement : 2
+Date d'arrivée (DD/MM/YYYY) : 11/02/2023
+Nombre de nuits : 8
+Nombre de personnes : 3
+
+Numéro du voyageur : 1
+Numéro du logement : 1
+Date d'arrivée (DD/MM/YYYY) : 18/02/2023
+Nombre de nuits : 6
+Nombre de personnes : 4
+
+Numéro du voyageur : 1
+Numéro du logement : 1
+Date d'arrivée (DD/MM/YYYY) : 18/03/2023
+Nombre de nuits : 6
+Nombre de personnes : 4
+
+Numéro du voyageur : 15
+Numéro du logement : 4
+Date d'arrivée (DD/MM/YYYY) : 18/03/2023
+Nombre de nuits : 6
+Nombre de personnes : 4
+
