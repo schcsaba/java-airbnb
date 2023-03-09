@@ -40,6 +40,10 @@ public class Appartement extends Logement {
         System.out.println("Nombre maximal de voyageurs : " + getNbVoyageursMax());
     }
 
+    public int getSuperficieBalcon() {
+        return superficieBalcon;
+    }
+
     @Override
     public int compareTo(@NotNull Logement o) {
         return super.compareTo(o);

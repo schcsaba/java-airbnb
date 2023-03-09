@@ -39,6 +39,14 @@ public class Maison extends Logement{
         System.out.println("Nombre maximal de voyageurs : " + getNbVoyageursMax());
     }
 
+    public boolean isPossedePiscine() {
+        return possedePiscine;
+    }
+
+    public int getSuperficieJardin() {
+        return superficieJardin;
+    }
+
     @Override
     public int compareTo(@NotNull Logement o) {
         return super.compareTo(o);

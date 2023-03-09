@@ -75,7 +75,7 @@ public class LogementsSaxParser {
         }
 
         @Override
-        public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
+        public void startElement(String uri, String localName, String qName, Attributes attributes) {
 
             switch (qName) {
                 case APPARTEMENT, MAISON -> name = attributes.getValue("name");
@@ -84,7 +84,7 @@ public class LogementsSaxParser {
         }
 
         @Override
-        public void endElement(String uri, String localName, String qName) throws SAXException {
+        public void endElement(String uri, String localName, String qName) {
             switch (qName) {
                 case NOM -> nom = elementValue.toString();
                 case PRENOM -> prenom = elementValue.toString();
@@ -121,7 +121,7 @@ public class LogementsSaxParser {
                 //    hotes.add(hote);
                 //}
                 case APPARTEMENT -> {
-                    Appartement appartement = new Appartement(name, hote, Integer.parseInt(tarifParNuit), adresse, Integer.parseInt(superficie), Integer.parseInt(nbVoyageursMax), Integer.parseInt(superficieBalcon), Integer.parseInt(numeroEtage));
+                    Appartement appartement = new Appartement(name, hote, Integer.parseInt(tarifParNuit), adresse, Integer.parseInt(superficie), Integer.parseInt(nbVoyageursMax), Integer.parseInt(numeroEtage), Integer.parseInt(superficieBalcon));
                     logements.add(appartement);
                 }
                 case MAISON -> {
