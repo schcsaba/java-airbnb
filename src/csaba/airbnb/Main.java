@@ -11,6 +11,9 @@ import csaba.airbnb.utilisateurs.Voyageur;
 import csaba.airbnb.logements.Search;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Optional;
+import java.util.OptionalDouble;
 
 
 public class Main {
@@ -54,18 +57,57 @@ public class Main {
 //            System.out.println("Erreur : " + e.getMessage());
 //        }
 
-        Search search = new Search.Builder(3).tarifMaxParNuit(300).tarifMinParNuit(50).possedePiscine(false).possedeJardin(true).possedeBalcon(true).build();
+        Search search = new Search.Builder(1).tarifMaxParNuit(200).possedeJardin(true).possedeBalcon(false).build();
         ArrayList<Logement> logements = search.result();
 
-        for (Logement logement: logements) {
-            System.out.println("--------------------------");
-            logement.afficher();
+        OptionalDouble optionalDoubleAverage = logements.stream().mapToInt(Logement::getTarifParNuit).average();
+        if (optionalDoubleAverage.isPresent()) {
+            System.out.println("Prix moyen : " + optionalDoubleAverage.getAsDouble());
         }
+        System.out.println("Nombre de logements trouvé : " + logements.size());
+
+        int difference;
+        int cheapPrice = 0;
+        int expensivePrice = 0;
+
+        System.out.println("----------------------------");
+
+        Optional<Logement> optionalCheapestLogement = logements.stream().min(Comparator.naturalOrder());
+        if (optionalCheapestLogement.isPresent()) {
+            System.out.println("Le moins cher : ");
+            Logement cheapestLogement = optionalCheapestLogement.get();
+            cheapestLogement.afficher();
+            cheapPrice = cheapestLogement.getTarifParNuit();
+        }
+
+        System.out.println("----------------------------");
+
+        Optional<Logement> optionalMostExpensiveLogement = logements.stream().max(Comparator.naturalOrder());
+        if (optionalMostExpensiveLogement.isPresent()) {
+            System.out.println("Le plus cher : ");
+            Logement mostExpensiveLogement = optionalMostExpensiveLogement.get();
+            mostExpensiveLogement.afficher();
+            expensivePrice = mostExpensiveLogement.getTarifParNuit();
+        }
+
+        System.out.println("----------------------------");
+
+        difference = expensivePrice - cheapPrice;
+        System.out.println("La différence : " + expensivePrice + "-" + cheapPrice + "=" + difference);
+
+        System.out.println("----------------------------");
+//        logements.forEach(Logement::afficher);
+
+
+//        for (Logement logement: logements) {
+//            System.out.println("--------------------------");
+//            logement.afficher();
+//        }
 
 //        System.out.println();
 //        System.out.println("Superficie total de la maison : " + maison.getSuperficieTotal() + "m2");
 //        System.out.println("Superficie total d'appartement : " + appartement.getSuperficieTotal() + "m2");
     }
-
-
 }
+
+

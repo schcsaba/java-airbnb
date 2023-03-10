@@ -30,6 +30,7 @@ public class Appartement extends Logement {
         }
         System.out.println(".\nLe logement est un appartement situé " + getAdresse() + " au " + etage + ".");
         System.out.println("Superficie : " + getSuperficie() + "m2");
+        System.out.println("Tarif par nuit : " + getTarifParNuit());
         String balcon;
         if (superficieBalcon > 0) {
             balcon = "Oui (" + superficieBalcon + "m2)";
